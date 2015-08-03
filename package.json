@@ -1,0 +1,29 @@
+{
+  "name": "vcp-webrtc-client",
+  "version": "0.0.0",
+  "description": "RICOH Visual Communication Platform webrtc client for javascript",
+  "main": "app.js",
+  "dependencies": {
+    "attachmediastream": "^1.3.2",
+    "getusermedia": "^1.3.2",
+    "webrtc-adapter-test": "^0.1.8"
+  },
+  "devDependencies": {
+    "babel": "^5.8.12",
+    "babelify": "^6.1.3",
+    "browserify": "^11.0.0",
+    "eslint": "^0.24.1",
+    "eslint-plugin-arrow-function": "^0.0.3",
+    "eslint-plugin-classes": "0.0.2",
+    "eslint-plugin-no-func-space": "0.0.4",
+    "eslint-plugin-nodeca": "^1.0.3",
+    "fixpack": "^2.2.0",
+    "mocha": "^2.0.1"
+  },
+  "scripts": {
+    "build": "for file in `ls src`; do browserify src/$file -t babelify -o build/$file; done",
+    "lint": "eslint src",
+    "test": "mocha -u tdd"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,11 @@
+video {
+  border: 1px solid #ccc;
+  width: 300px;
+  height: 150px;
+}
+
+textarea {
+  display: block;
+  width: 20em;
+  height: 10em;
+}
