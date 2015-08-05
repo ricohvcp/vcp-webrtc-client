@@ -21,7 +21,7 @@
     "mocha": "^2.0.1"
   },
   "scripts": {
-    "build": "for file in `ls src`; do browserify src/$file -t babelify -o build/$file; done",
+    "build": "mkdir -p build && ls src | xargs -L 1 -P 20 -I% browserify src/% -t babelify -o build/%",
     "lint": "eslint src",
     "test": "mocha -u tdd"
   },
