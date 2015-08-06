@@ -20,7 +20,7 @@
   },
   "scripts": {
     "build": "mkdir -p build && ls src | xargs -L 1 -P 20 -I% browserify src/% -t babelify -o build/%",
-    "lint": "eslint src",
+    "lint": "eslint src --rule 'no-console:0'",
     "test": "mocha -u tdd"
   },
   "license": "MIT"
