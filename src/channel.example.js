@@ -1,18 +1,20 @@
-/*eslint no-console:0, no-extra-parens:0 */
+/* eslint no-extra-parens:0 */
 import { WebRTC } from './webrtc';
 import { WS } from './ws';
 
-function chat(channel) {
-  var id = channel.id;
+const wsshost = localStorage.wsshost;
 
-  var t = document.querySelector('#chattmpl');
-  var clone = document.importNode(t.content, true);
+function chat(channel) {
+  const id = channel.id;
+
+  const t = document.querySelector('#chattmpl');
+  const clone = document.importNode(t.content, true);
 
   clone.querySelector('textarea').setAttribute('class', `x-${id}`);
   clone.querySelector('input').setAttribute('class', `x-${id}`);
   clone.querySelector('input').setAttribute('value', `send(${id})`);
 
-  var chats = document.querySelector('#chats');
+  const chats = document.querySelector('#chats');
   chats.appendChild(clone);
 
   channel.on('message', (message) => {
@@ -25,12 +27,12 @@ function chat(channel) {
 }
 
 function main() {
-  let id = localStorage.id;
-  let peerid = (id === 'chrome') ? 'firefox' : 'chrome';
+  const id = localStorage.id;
+  const peerid = (id === 'chrome') ? 'firefox' : 'chrome';
 
   console.log(id, peerid);
-  let ws = new WS(wsshost);
-  let webrtc = new WebRTC(id, peerid, ws);
+  const ws = new WS(wsshost);
+  const webrtc = new WebRTC(id, peerid, ws);
 
   webrtc.on('channel', (channel) => {
     chat(channel);

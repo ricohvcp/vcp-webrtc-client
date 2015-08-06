@@ -21,7 +21,7 @@ export function getMediaDevices() {
       //   ...
       // }
       devices = devices.reduce((pre, curr) => {
-        let kind = curr.kind;
+        const kind = curr.kind;
         if (pre[kind] === undefined) {
           pre[kind] = [];
         }

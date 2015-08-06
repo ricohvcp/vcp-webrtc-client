@@ -1,4 +1,4 @@
-/*eslint no-console:0, curly:0, no-extra-parens:1 */
+/* eslint no-extra-parens:1 */
 import { EventEmitter } from 'events';
 import { RTC } from './rtc';
 
@@ -16,8 +16,8 @@ export class WebRTC extends EventEmitter {
     this.socket.on('message', (message) => {
       if (message.to !== this.id) return;
 
-      let type = message.type;
-      let data = message.data;
+      const type = message.type;
+      const data = message.data;
 
       console.log(this.id, 'receive', type);
 
@@ -42,7 +42,7 @@ export class WebRTC extends EventEmitter {
     this.rtc.on('icecandidate', (ice) => {
       this.send({
         type: 'ice',
-        data: ice
+        data: ice,
       });
     });
 
@@ -89,7 +89,7 @@ export class WebRTC extends EventEmitter {
       // sdp comes here too
       this.send({
         type: 'offer',
-        data: sdp
+        data: sdp,
       });
     });
   }
@@ -104,14 +104,14 @@ export class WebRTC extends EventEmitter {
       // sdp comes here too
       this.send({
         type: 'answer',
-        data: sdp
+        data: sdp,
       });
     });
   }
 
   offerRequest() {
     this.send({
-      type: 'offerRequest'
+      type: 'offerRequest',
     });
   }
 

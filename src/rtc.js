@@ -1,4 +1,3 @@
-/*eslint no-console:0, curly:0, classes/space:0 */
 import { RTCPeerConnection } from 'webrtc-adapter-test';
 import { EventEmitter } from 'events';
 import { Channel } from './channel';
@@ -10,7 +9,7 @@ export class RTC extends EventEmitter {
     this.id = id;
 
     this.connection = new RTCPeerConnection({
-      'iceServers': []
+      iceServers: [],
     });
 
     this.connection.onicecandidate = (e) => {
@@ -74,14 +73,14 @@ export class RTC extends EventEmitter {
     console.log(this.id, 'createDataChannel', label, option);
 
     // DataChannel
-    let channel = this.connection.createDataChannel(label, option);
+    const channel = this.connection.createDataChannel(label, option);
     this.emit('channel', new Channel(channel));
   }
 
   addIceCandidate(ice) {
     console.log(this.id, 'addIceCandidate', ice);
 
-    let candidate = new RTCIceCandidate(ice);
+    const candidate = new RTCIceCandidate(ice);
     return new Promise((resolve, reject) => {
       this.connection.addIceCandidate(candidate, resolve, reject);
     });

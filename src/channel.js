@@ -1,4 +1,3 @@
-/*eslint no-console:0, classes/space:0 */
 import { EventEmitter } from 'events';
 
 export class Channel extends EventEmitter {
