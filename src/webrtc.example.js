@@ -25,7 +25,8 @@ function main() {
 
   webrtc.on('channel', (channel) => {
     channel.on('message', (message) => {
-      $('#view').value += (message + '\n');
+      message += '\n';
+      $('#view').value += message;
     });
     setInterval(() => {
       channel.send(`${id} ${Date.now()}`);
